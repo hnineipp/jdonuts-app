@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:jd_donuts/app/router/route_names.dart';
 
 import 'package:jd_donuts/core/theme/app_colors.dart';
 import 'package:jd_donuts/core/theme/app_radius.dart';
@@ -18,30 +19,33 @@ class AppBottomNavigationBar extends StatelessWidget {
   static const double _inactiveItemSize = 46;
   static const double _iconSize = 25;
 
-  static const List<_NavigationItem> _items = [
+  static List<_NavigationItem> _items = [
     _NavigationItem(
       icon: Icons.home_outlined,
-      route: '/home',
+      routeName: RouteNames.main.home,
       labelKey: 'home',
     ),
     _NavigationItem(
       icon: Icons.workspace_premium_outlined,
-      route: '/rewards',
+      routeName: RouteNames.main.rewards,
       labelKey: 'rewards',
     ),
     _NavigationItem(
       icon: Icons.account_circle_outlined,
-      route: '/placeholder/Account',
+      routeName: RouteNames.main.placeholder,
+      pathParameters: {'name': 'Account'},
       labelKey: 'account',
     ),
     _NavigationItem(
       icon: Icons.account_balance_wallet_outlined,
-      route: '/placeholder/Wallet',
+      routeName: RouteNames.main.placeholder,
+      pathParameters: {'name': 'Wallet'},
       labelKey: 'wallet',
     ),
     _NavigationItem(
       icon: Icons.settings_outlined,
-      route: '/placeholder/Settings',
+      routeName: RouteNames.main.placeholder,
+      pathParameters: {'name': 'Settings'},
       labelKey: 'settings',
     ),
   ];
@@ -118,7 +122,6 @@ class AppBottomNavigationBar extends StatelessWidget {
                   return Expanded(
                     flex: flexValues[index],
                     child: Padding(
-                      // Moves the complete navigation item.
                       padding: EdgeInsets.only(
                         left: index == 0 ? 12 : 6,
                         top: 8,
@@ -134,7 +137,10 @@ class AppBottomNavigationBar extends StatelessWidget {
                             behavior: HitTestBehavior.opaque,
                             onTap: () {
                               if (!isActive) {
-                                context.go(item.route);
+                                context.goNamed(
+                                  item.routeName,
+                                  pathParameters: item.pathParameters,
+                                );
                               }
                             },
                             child: AnimatedContainer(
@@ -208,11 +214,13 @@ class AppBottomNavigationBar extends StatelessWidget {
 class _NavigationItem {
   const _NavigationItem({
     required this.icon,
-    required this.route,
+    required this.routeName,
     required this.labelKey,
+    this.pathParameters = const {},
   });
 
   final IconData icon;
-  final String route;
+  final String routeName;
   final String labelKey;
+  final Map<String, String> pathParameters;
 }

@@ -75,7 +75,7 @@ class OnboardingScreen extends StatelessWidget {
                     offset: const Offset(0, 0.3),
                     child: PrimaryButton(
                       label: l10n.getStarted,
-                      onPressed: () => context.push('/phone'),
+                      onPressed: () => context.pushNamed(RouteNames.main.phone),
                     ),
                   ),
                   SizedBox(height: 16.h),
@@ -83,7 +83,12 @@ class OnboardingScreen extends StatelessWidget {
                     delay: const Duration(milliseconds: 800),
                     offset: const Offset(0, 0.2),
                     child: TextButton(
-                      onPressed: () => context.push('/phone?mode=login'),
+                      onPressed: () => context.pushNamed(
+                        RouteNames.main.phone,
+                        queryParameters: {
+                          'mode': 'login',
+                        },
+                      ),
                       child: Text.rich(
                         TextSpan(
                           style: const TextStyle(

@@ -1,4 +1,3 @@
-/// Expected application failures exposed to presentation and domain layers.
 sealed class AppFailure {
   const AppFailure(this.message, {this.cause, this.stackTrace});
   final String message;

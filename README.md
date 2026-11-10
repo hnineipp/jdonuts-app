@@ -1,25 +1,27 @@
 # J'Donuts Flutter App
 
-A feature-first Flutter application for the J'Donuts assessment. It demonstrates local authentication, offline-first product browsing, product details, and an animated Rewards experience.
+A feature-first Flutter application developed for the J'Donuts assessment. It demonstrates local authentication, offline-first product browsing, product details, and an animated Rewards experience.
 
-## 1. SDK and technologies
+## 1. SDK and Technologies
 
-| Technology | Version / choice |
+| Technology | Version / Choice |
 |---|---|
 | Flutter | 3.47.2 (stable) |
 | Dart | 3.13.2 |
-| State management | Riverpod 2.6.1 |
+| State Management | Riverpod 2.6.1 |
 | Navigation | GoRouter 14.8.1 |
-| Local database | Hive CE |
-| Session storage | flutter_secure_storage |
+| Local Database | Hive CE |
+| Session Storage | flutter_secure_storage |
 | Connectivity | connectivity_plus + internet reachability check |
 | Localization | Flutter gen-l10n (English and Burmese) |
 
-> These are the versions reported for the development environment. Confirm with `flutter --version` before submitting if the final build was produced with a different SDK.
+> These are the versions reported for the development environment. Confirm with `flutter --version` if the final build uses a different SDK.
 
-## 2. How to run
+## 2. How to Run
 
-Requirements: Flutter SDK and Android Studio or Xcode.
+**Requirements:** Flutter SDK and Android Studio or Xcode.
+
+Install dependencies and run the application:
 
 ```bash
 flutter pub get
@@ -32,60 +34,57 @@ Run static analysis and tests:
 ```bash
 flutter analyze
 flutter test
-flutter test integration_test
+
+# Run all unit and widget tests
+flutter test
+
+# Run unit tests only
+flutter test test/unit
+
+# Run widget tests only
+flutter test test/widget
 ```
 
-## 3. Architecture and folder map
+## 3. Architecture
 
-The project uses a feature-first structure with separation between presentation, domain, and data responsibilities.
+The project follows a feature-first architecture with separation of presentation, domain, and data responsibilities.
 
-```text
-lib/
-├── app/                 # App bootstrap, routing and app-wide providers
-├── core/                # Shared errors, motion, navigation, network,
-│                        # storage, theme and reusable widgets
-├── data/
-│   └── catalog/         # Shared local catalogue used by Home,
-│                        # Product and Rewards
-├── features/
-│   ├── auth/            # Authentication data, domain and presentation
-│   ├── home/            # Home presentation
-│   ├── product/         # Product detail presentation
-│   ├── rewards/         # Rewards presentation
-│   └── welcome/         # Welcome presentation
-└── l10n/                # English and Burmese ARB files
-```
+**Architecture decisions:**
 
-**Architecture choices**
+- **Riverpod** manages application state and dependency injection.
+- **GoRouter** handles navigation and authentication redirects.
+- **Core** contains shared infrastructure, including errors, networking, storage, navigation, motion, theme, and reusable widgets.
+- **Data layer** separates authentication, local storage, store, and rewards responsibilities.
+- **LocalAppDataSource** provides shared access to application data.
+- **Store and Rewards** have separate repositories and services, allowing each module to access only the data it requires.
+- **Presentation layer** keeps feature-specific screens, widgets, and view models within their respective features.
+- Shared design tokens and reusable infrastructure are maintained in `core/`.
 
-- Riverpod manages state and dependency injection.
-- GoRouter handles navigation and authentication redirects.
-- Shared catalogue data is outside the Home feature because Home, Product and Rewards use the same source.
-- Shared design tokens and reusable infrastructure live in `core/`.
-- Feature-specific UI and view models remain within their respective features.
+## 4. Offline Strategy and Local Database
 
-## 4. Offline strategy and local database
+The assessment does not require a backend. The application uses bundled local data and persistent storage.
 
-The assessment does not require a backend. The app uses bundled local data and persistent storage.
+- `assets/data/app_data.json` provides the initial application data.
+- Hive CE stores application data locally on the device.
+- The database is initialized on first launch and uses schema versioning for migrations.
+- Existing member information is preserved during database migration.
+- Product and shop images required offline are bundled as application assets.
+- Home, Product, Store, and Rewards access shared local data through dedicated data sources and repositories.
+- `connectivity_plus` detects network interface changes.
+- A separate internet reachability check determines whether the internet is actually accessible.
+- Pull-to-refresh reloads the local data.
+- No remote server synchronization is configured.
 
-- `assets/data/catalog.json` provides the initial catalogue.
-- Hive CE stores the catalogue on the device.
-- The database is seeded on first launch and uses a schema version for migration.
-- Product and shop images needed offline are bundled as app assets.
-- Home, Product and Rewards read the same local catalogue and member record, keeping member points consistent across screens.
-- `connectivity_plus` detects network interface changes; a separate reachability check helps determine whether the internet is actually reachable.
-- Pull-to-refresh reloads the local catalogue. There is no remote server synchronization because no backend is configured.
-
-Authentication/session demonstration:
+**Authentication and session management:**
 
 - OTP verification is simulated locally; no SMS is sent.
 - Registered-user data is stored locally.
 - Session state is persisted using `flutter_secure_storage`.
 - Session restoration and logout are supported.
 
-## 5. Animations implemented
+## 5. Animations Implemented
 
-**Onboarding and authentication**
+**Onboarding and Authentication**
 - Screen entrance and route transition animations.
 - Button interaction feedback.
 
@@ -94,13 +93,13 @@ Authentication/session demonstration:
 - Staggered section entrance.
 - Auto-playing promotional banner carousel.
 
-**Product detail**
+**Product Detail**
 - Product image Hero transition.
 - Animated quantity changes and live total updates.
 
 **Rewards**
 - Animated points counter and custom-painted points ring.
-- Animated Silver, Gold and Platinum tier progression.
+- Animated Silver, Gold, and Platinum tier progression.
 - Moving tab indicator and animated content transition.
 - Staggered challenge-card entrance.
 - Donut and coffee challenge progress artwork.
@@ -109,59 +108,12 @@ Authentication/session demonstration:
 **Navigation**
 - Animated active navigation indicator between tabs.
 
-## 6. Fake OTP code
+## 6. Demo OTP Code
 
 | Item | Behaviour |
 |---|---|
 | Demo OTP | `123456` |
-| SMS delivery | Not implemented |
+| SMS Delivery | Not implemented |
 | Verification | Local simulation |
-| Backend authentication | Not configured |
-| Session persistence | `flutter_secure_storage` |
-
-This is a demonstration flow only and is not production authentication.
-
-## 7. Localization
-
-The app uses Flutter `gen-l10n`.
-
-- English: `lib/l10n/app_en.arb`
-- Burmese: `lib/l10n/app_my.arb`
-
-Generate localization files with:
-
-```bash
-flutter gen-l10n
-```
-
-## 8. Tests
-
-The test suite covers unit, widget and integration behaviour, including:
-
-- Phone validation, OTP attempt policy and session behaviour.
-- Local database initialization and schema migration.
-- Rewards and challenge progress calculations.
-- Login and registration validation.
-- Product quantity and total calculations.
-- Rewards and Gift tab interactions.
-- Registration-to-Home-to-Product navigation.
-- Shared member data and offline navigation.
-
-Run the suites with:
-
-```bash
-flutter test
-```
-
-**Reported test status:** The developer reports that the unit, widget and integration tests have been run and passed. Re-run them against the final submission build before submission.
-
-## 9. Known limitations
-
-- OTP and authentication are simulated; there is no SMS provider or production authentication backend.
-- There is no remote catalogue API or server synchronization.
-- Rewards tier thresholds and challenge data are demonstration data, not connected to a live loyalty service.
-
-## 10. Development time
-
-**Actual development time:** 16 hours
-
+| Backend Authentication | Not configured |
+| Session Persistence |

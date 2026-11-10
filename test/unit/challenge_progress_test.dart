@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:jd_donuts/features/rewards/domain/models/challenge_progress.dart';
+import 'package:jd_donuts/data/rewards/domain/models/challenge_progress.dart';
 
 void main() {
   group('ChallengeProgress', () {

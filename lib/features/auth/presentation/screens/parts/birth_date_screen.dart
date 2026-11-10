@@ -251,7 +251,7 @@ class _BirthDateScreenState extends ConsumerState<BirthDateScreen> {
                 );
 
                 if (context.mounted) {
-                  context.go('/welcome');
+                  context.goNamed(RouteNames.main.welcome);
                 }
               } catch (error) {
                 if (mounted) {

@@ -1,0 +1,162 @@
+{
+  "member": {
+    "id": "member_001",
+    "name": "Hania",
+    "tier": "Bronze",
+    "points": 680000,
+    "pointsToNextTier": 1290,
+    "photo": "assets/images/member_reference.jpg",
+    "notifications": 2,
+    "nextTier": "Gold"
+  },
+  "banners": [
+    {
+      "id": "b1",
+      "title": "We are now at Central Boulevard",
+      "subtitle": "Visit our newest shop",
+      "badge": "New shop",
+      "image": "assets/images/banner_shop_reference.jpg"
+    },
+    {
+      "id": "b2",
+      "title": "Hot deals this week",
+      "subtitle": "Your favourite treats are waiting",
+      "badge": "60% off",
+      "image": "assets/images/banner_deal.png"
+    }
+  ],
+  "products": [
+    {
+      "id": "p_coconut",
+      "code": "JD022123",
+      "name": "Coconut Donut",
+      "priceMmk": 3200,
+      "isNew": true,
+      "discountPercent": null,
+      "image": "assets/images/donut_coconut.png",
+      "description": "Enjoy our scrumptious donuts – soft, sweet, and satisfying in every bite. Choose from classic glazed, rich chocolate, or fun sprinkles. Dive into deliciousness now!",
+      "section": "Seasonal specials",
+      "homeDiscountPercent": 50
+    },
+    {
+      "id": "p_strawberry",
+      "code": "JD022124",
+      "name": "Strawberry Chocolate Donut",
+      "priceMmk": 3500,
+      "isNew": false,
+      "discountPercent": 20,
+      "image": "assets/images/donut_strawberry_reference.jpg",
+      "description": "A soft and fluffy donut topped with strawberry icing and rich chocolate drizzle.",
+      "section": "Popular",
+      "homeDiscountPercent": 20,
+      "orderAgainTitle": "Santa’s favorite cookies set"
+    },
+    {
+      "id": "p_coffee",
+      "code": "JD022125",
+      "name": "Dalgona Creamy Coffee",
+      "priceMmk": 4500,
+      "isNew": false,
+      "discountPercent": null,
+      "image": "assets/images/coffee_reference.jpg",
+      "description": "Smooth creamy coffee topped with a sweet whipped coffee foam.",
+      "section": "Popular",
+      "homeDiscountPercent": 20,
+      "orderAgainTitle": "Santa’s favorite cookies set"
+    },
+    {
+      "id": "p_box",
+      "code": "JD022126",
+      "name": "Christmas Mix Family Box",
+      "priceMmk": 12000,
+      "isNew": true,
+      "discountPercent": 15,
+      "image": "assets/images/donut_box.png",
+      "description": "A colourful box of assorted J'Donuts to share with family and friends.",
+      "section": "Seasonal specials",
+      "homeDiscountPercent": 50
+    }
+  ],
+  "shops": [
+    {
+      "id": "shop_01",
+      "name": "J'Donuts Central Boulevard",
+      "distance": "0.8 km",
+      "address": "Central Boulevard, Yangon",
+      "image": "assets/images/shop_myanigone.jpg"
+    },
+    {
+      "id": "shop_02",
+      "name": "J'Donuts Junction City",
+      "distance": "1.4 km",
+      "address": "Junction City, Yangon",
+      "image": "assets/images/shop_central_boulevard.jpg"
+    },
+    {
+      "id": "shop_03",
+      "name": "Sanchaung J'Donut",
+      "address": "Sanchaung Township, Yangon.",
+      "distance": "3.1 km",
+      "image": "assets/images/shop_sanchaung.jpg"
+    },
+    {
+      "id": "shop_04",
+      "name": "J'Donuts Central",
+      "distance": "0.8 km",
+      "address": "Central Boulevard, Yangon",
+      "image": "assets/images/shop_myanigone.jpg"
+    }
+  ],
+  "challenges": [
+    {
+      "id": "c1",
+      "title": "Eat 4 Coco donuts",
+      "progress": 4,
+      "target": 4,
+      "points": 100,
+      "kind": "donut",
+      "image": "assets/images/challenge_donut.png"
+    },
+    {
+      "id": "c2",
+      "title": "Enjoy 12 cups of coffee",
+      "progress": 9,
+      "target": 12,
+      "points": 150,
+      "kind": "coffee",
+      "image": "assets/images/coffee.png"
+    },
+    {
+      "id": "c3",
+      "title": "Try 4 new flavours",
+      "progress": 1,
+      "target": 4,
+      "points": 80,
+      "kind": "donut",
+      "image": "assets/images/donut_strawberry.png"
+    }
+  ],
+  "gifts": [
+    {
+      "id": "g1",
+      "title": "Free classic donut",
+      "subtitle": "Redeem with 500 points",
+      "points": 500
+    },
+    {
+      "id": "g2",
+      "title": "Coffee upgrade",
+      "subtitle": "Redeem with 800 points",
+      "points": 800
+    }
+  ],
+  "sections": [
+    "Seasonal specials",
+    "Popular",
+    "Order again"
+  ],
+  "orderAgainProductIds": [
+    "p_strawberry",
+    "p_coffee"
+  ]
+}

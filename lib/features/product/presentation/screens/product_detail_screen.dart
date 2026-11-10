@@ -8,8 +8,8 @@ import 'package:jd_donuts/core/theme/app_colors.dart';
 import 'package:jd_donuts/core/theme/app_radius.dart';
 import 'package:jd_donuts/core/theme/app_spacing.dart';
 import 'package:jd_donuts/core/widgets/common_widgets.dart';
-import 'package:jd_donuts/data/catalog/model/product_model.dart';
-import 'package:jd_donuts/features/product/presentation/view_models/product_detail_view_model.dart';
+import 'package:jd_donuts/data/store/model/product_model.dart';
+import 'package:jd_donuts/features/product/view_models/product_detail_view_model.dart';
 import 'package:jd_donuts/l10n/app_localizations.dart';
 
 part '../widgets/product_detail_header.dart';
@@ -22,9 +22,11 @@ class ProductDetailScreen extends ConsumerStatefulWidget {
   const ProductDetailScreen({
     super.key,
     required this.productId,
+    required this.heroTag,
   });
 
   final String productId;
+  final String heroTag;
 
   @override
   ConsumerState<ProductDetailScreen> createState() =>
@@ -87,6 +89,7 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
             ),
             data: (product) => _buildProductContent(
               product,
+              widget.heroTag,
               offline: offlineAsync.valueOrNull ?? false,
             ),
           ),
@@ -96,7 +99,8 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
   }
 
   Widget _buildProductContent(
-    ProductModel product, {
+    ProductModel product,
+    String heroTag, {
     required bool offline,
   }) {
     final price = product.priceMmk;
@@ -128,6 +132,7 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
                   children: [
                     _ProductHeroCard(
                       product: product,
+                      heroTag: heroTag,
                       formattedPrice: formattedPrice,
                       heroHeight: heroHeight,
                       quantity: _quantity,

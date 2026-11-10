@@ -1,6 +1,5 @@
 import 'app_failure.dart';
 
-/// A typed result. Expected failures are values; they are never encoded as strings.
 sealed class Result<T> {
   const Result();
 }

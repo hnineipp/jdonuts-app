@@ -3,6 +3,7 @@ part of '../screens/product_detail_screen.dart';
 class _ProductHeroCard extends StatelessWidget {
   const _ProductHeroCard({
     required this.product,
+    required this.heroTag,
     required this.formattedPrice,
     required this.heroHeight,
     required this.quantity,
@@ -11,6 +12,7 @@ class _ProductHeroCard extends StatelessWidget {
   });
 
   final ProductModel product;
+  final String heroTag;
   final String formattedPrice;
   final double heroHeight;
   final int quantity;
@@ -97,7 +99,7 @@ class _ProductHeroCard extends StatelessWidget {
                   Expanded(
                     child: Center(
                       child: Hero(
-                        tag: 'product-${product.id}',
+                        tag: heroTag,
                         child: AppImage(
                           product.image,
                           fit: BoxFit.contain,

@@ -5,10 +5,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:jd_donuts/app/providers/app_providers.dart';
+import 'package:jd_donuts/app/router/route_names.dart';
 import 'package:jd_donuts/core/widgets/common_widgets.dart';
-import 'package:jd_donuts/data/catalog/model/product_model.dart';
-import 'package:jd_donuts/features/home/presentation/view_models/home_state.dart';
-import 'package:jd_donuts/features/home/presentation/view_models/home_view_model.dart';
+import 'package:jd_donuts/data/store/model/product_model.dart';
+import 'package:jd_donuts/features/home/view_models/home_state.dart';
+import 'package:jd_donuts/features/home/view_models/home_view_model.dart';
 import 'package:jd_donuts/features/home/presentation/widgets/home_error_view.dart';
 import 'package:jd_donuts/features/home/presentation/widgets/home_hero_section.dart';
 import 'package:jd_donuts/features/home/presentation/widgets/home_loading_view.dart';
@@ -193,9 +194,13 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     );
   }
 
-  void _openProduct(ProductModel product) {
-    if (product.id.isEmpty) return;
-
-    context.push('/product/${product.id}');
+  void _openProduct(ProductModel product, String heroTag) {
+    context.pushNamed(
+      RouteNames.main.productDetail,
+      pathParameters: {
+        'id': product.id,
+      },
+      extra: heroTag,
+    );
   }
 }

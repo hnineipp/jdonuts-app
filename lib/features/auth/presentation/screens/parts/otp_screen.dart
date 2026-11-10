@@ -125,7 +125,7 @@ class _OtpScreenState extends ConsumerState<OtpScreen>
       await _completeLogin();
     } else {
       setState(() => _loading = false);
-      context.push('/name');
+      context.pushNamed(RouteNames.main.name);
     }
   }
 
@@ -149,7 +149,8 @@ class _OtpScreenState extends ConsumerState<OtpScreen>
       final exists = await ref.authVM.verifyLogin(widget.phone);
       if (!mounted) return;
       if (exists) {
-        context.go('/home');
+        context.goNamed(RouteNames.main.home);
+        ;
       } else {
         setState(() {
           _loading = false;
@@ -180,7 +181,7 @@ class _OtpScreenState extends ConsumerState<OtpScreen>
 
   void _openRegistration() {
     ref.registrationVM.setPhone(widget.phone, login: false);
-    context.push('/name');
+    context.pushNamed(RouteNames.main.name);
   }
 
   @override

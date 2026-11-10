@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jd_donuts/core/theme/app_theme.dart';
-import 'package:jd_donuts/data/catalog/model/shop_model.dart';
+import 'package:jd_donuts/data/store/model/shop_model.dart';
 import 'package:jd_donuts/features/home/presentation/widgets/nearby_shop_card.dart';
 import 'package:jd_donuts/features/home/presentation/widgets/section_feedback.dart';
 import 'package:jd_donuts/l10n/app_localizations.dart';

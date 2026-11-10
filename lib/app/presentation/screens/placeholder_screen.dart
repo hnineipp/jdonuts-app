@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jd_donuts/core/theme/app_colors.dart';
 
-import 'package:jd_donuts/features/auth/presentation/view_models/auth_view_model.dart';
+import 'package:jd_donuts/features/auth/view_models/auth_view_model.dart';
 import 'package:jd_donuts/l10n/app_localizations.dart';
 
 class PlaceholderScreen extends ConsumerStatefulWidget {

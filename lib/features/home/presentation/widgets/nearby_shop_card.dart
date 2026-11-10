@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:jd_donuts/core/theme/app_theme.dart';
 import 'package:jd_donuts/core/widgets/network_image_widget.dart';
-import 'package:jd_donuts/data/catalog/model/shop_model.dart';
+import 'package:jd_donuts/data/store/model/shop_model.dart';
 
 class NearbyShopCard extends StatelessWidget {
   const NearbyShopCard({

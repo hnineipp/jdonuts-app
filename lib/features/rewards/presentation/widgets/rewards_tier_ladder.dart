@@ -18,9 +18,9 @@ class _RewardsTierLadder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final tiers = <({String name, String initial, String caption, Color color})>[];
-    // Include Bronze only when it is the member's actual current tier.
-    // Silver, Gold and Platinum remain in the required order.
+    final tiers =
+        <({String name, String initial, String caption, Color color})>[];
+
     if (currentTier.toLowerCase() == 'bronze') {
       tiers.add((
         name: 'Bronze',
@@ -30,13 +30,28 @@ class _RewardsTierLadder extends StatelessWidget {
       ));
     }
     tiers.addAll([
-      (name: 'Silver', initial: 'S', caption: currentTier == 'Silver'
-          ? 'You’re here now' : 'Silver member', color: AppColors.silver),
-      (name: 'Gold', initial: 'G', caption: currentTier == 'Gold'
-          ? 'You’re here now'
-          : '$pointsToNext pts Remaining\nto become $nextTier', color: AppColors.gold),
-      (name: 'Platinum', initial: 'P', caption: currentTier == 'Platinum'
-          ? 'You’re here now' : 'You’ll be here soon', color: AppColors.cyanBright),
+      (
+        name: 'Silver',
+        initial: 'S',
+        caption: currentTier == 'Silver' ? 'You’re here now' : 'Silver member',
+        color: AppColors.silver
+      ),
+      (
+        name: 'Gold',
+        initial: 'G',
+        caption: currentTier == 'Gold'
+            ? 'You’re here now'
+            : '$pointsToNext pts Remaining\nto become $nextTier',
+        color: AppColors.gold
+      ),
+      (
+        name: 'Platinum',
+        initial: 'P',
+        caption: currentTier == 'Platinum'
+            ? 'You’re here now'
+            : 'You’ll be here soon',
+        color: AppColors.cyanBright
+      ),
     ]);
 
     return AnimatedBuilder(
@@ -55,7 +70,8 @@ class _RewardsTierLadder extends StatelessWidget {
             // Fill completed tier segments, then animate the final segment
             // leading to the member's actual nextTier from the local record.
             final lineProgress = nextIndex > currentIndex &&
-                    index >= currentIndex && index < nextIndex
+                    index >= currentIndex &&
+                    index < nextIndex
                 ? (index < nextIndex - 1
                     ? 1.0
                     : (tierProgress * animation.value).clamp(0.0, 1.0))
@@ -116,6 +132,8 @@ class _RewardsTierLadder extends StatelessWidget {
                   ),
                   const SizedBox(width: 10),
                   Expanded(
+                      child: Padding(
+                    padding: EdgeInsets.only(bottom: 20),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -137,7 +155,7 @@ class _RewardsTierLadder extends StatelessWidget {
                         ),
                       ],
                     ),
-                  ),
+                  )),
                 ],
               ),
             );

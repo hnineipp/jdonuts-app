@@ -7,9 +7,13 @@ import 'package:hive_ce_flutter/hive_flutter.dart';
 class LocalDatabase {
   LocalDatabase._();
 
-  static const int schemaVersion = 4;
+  static const int schemaVersion = 5;
+
   static const String _boxName = 'jd_donuts_v1';
-  static const String _catalogAsset = 'assets/data/catalog.json';
+  static const String _appDataAsset = 'assets/data/app_data.json';
+
+  static const String _appDataKey = 'app_data';
+  static const String _legacyCatalogKey = 'catalog';
 
   static late Box<dynamic> _box;
 
@@ -21,93 +25,88 @@ class LocalDatabase {
     final storedVersion =
         (_box.get('schema_version', defaultValue: 0) as num).toInt();
 
-    final hasCatalog = _box.containsKey('catalog');
+    final hasAppData = _box.containsKey(_appDataKey);
 
     debugPrint('===== DATABASE INITIALIZATION =====');
     debugPrint('Stored schema: $storedVersion');
     debugPrint('Current schema: $schemaVersion');
-    debugPrint('Has catalog: $hasCatalog');
+    debugPrint('Has app data: $hasAppData');
 
-    if (storedVersion < schemaVersion || !hasCatalog) {
-      await _migrateCatalog();
+    if (storedVersion < schemaVersion || !hasAppData) {
+      await _migrateAppData();
     }
 
     debugPrint('Database initialization completed.');
     debugPrint('===================================');
   }
 
-  static Future<void> _migrateCatalog() async {
-    debugPrint('Starting catalog migration...');
+  static Future<void> _migrateAppData() async {
+    debugPrint('Starting app data migration...');
 
-    // Read the latest bundled JSON.
-    final raw = await rootBundle.loadString(_catalogAsset);
-
+    final raw = await rootBundle.loadString(_appDataAsset);
     final decoded = jsonDecode(raw);
 
     if (decoded is! Map) {
       throw const FormatException(
-        'Invalid catalog JSON format.',
+        'Invalid app data JSON format.',
       );
     }
 
-    final seedCatalog = Map<String, dynamic>.from(decoded);
+    final seedData = Map<String, dynamic>.from(decoded);
 
-    // Read existing catalog to preserve member information.
-    Map<String, dynamic> existingCatalog = {};
+    final existing = _box.get(_appDataKey) ?? _box.get(_legacyCatalogKey);
 
-    if (_box.containsKey('catalog')) {
-      final existing = _box.get('catalog');
+    Map<String, dynamic> existingData = {};
 
-      if (existing is Map) {
-        existingCatalog = Map<String, dynamic>.from(existing);
-      }
+    if (existing is Map) {
+      existingData = Map<String, dynamic>.from(existing);
     }
 
-    // Latest bundled seed data becomes the source of truth.
-    final updatedCatalog = <String, dynamic>{
-      ...existingCatalog,
-      ...seedCatalog,
+    final updatedData = <String, dynamic>{
+      ...existingData,
+      ...seedData,
     };
 
-    // Preserve the existing member record.
-    final existingMember = existingCatalog['member'];
+    final existingMember = existingData['member'];
 
     if (existingMember is Map) {
-      updatedCatalog['member'] = Map<String, dynamic>.from(existingMember);
+      updatedData['member'] = Map<String, dynamic>.from(existingMember);
     }
 
-    // Validate and update shop records.
-    final shops = updatedCatalog['shops'];
+    final shops = updatedData['shops'];
 
     if (shops is! List) {
       throw const FormatException(
-        'Catalog shops must be a list.',
+        'App data shops must be a list.',
       );
     }
 
     for (final shop in shops) {
       if (shop is Map) {
         debugPrint(
-          'Shop migration: ${shop['name']} '
-          '| Image: ${shop['image']}',
+          'Shop: ${shop['name']} | Image: ${shop['image']}',
         );
       }
     }
 
-    // Save catalog and version.
-    await _box.put('catalog', updatedCatalog);
+    await _box.put(_appDataKey, updatedData);
     await _box.put('schema_version', schemaVersion);
 
-    debugPrint('Catalog migration completed successfully.');
+    // Remove legacy key after successful migration.
+    if (_box.containsKey(_legacyCatalogKey)) {
+      await _box.delete(_legacyCatalogKey);
+    }
+
+    debugPrint('App data migration completed successfully.');
   }
 
   static Box<dynamic> get box => _box;
 
-  static Map<String, dynamic> get catalog {
-    final value = _box.get('catalog');
+  static Map<String, dynamic> get appData {
+    final value = _box.get(_appDataKey);
 
     if (value is! Map) {
-      throw StateError('Local catalog is unavailable.');
+      throw StateError('Local app data is unavailable.');
     }
 
     return Map<String, dynamic>.from(value);

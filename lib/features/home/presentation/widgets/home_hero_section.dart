@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jd_donuts/core/theme/app_theme.dart';
-import 'package:jd_donuts/data/catalog/model/banner_model.dart';
-import 'package:jd_donuts/data/catalog/model/member_model.dart';
+import 'package:jd_donuts/data/store/model/banner_model.dart';
+import 'package:jd_donuts/data/store/model/member_model.dart';
 import 'package:jd_donuts/features/home/presentation/widgets/member_header.dart';
 import 'package:jd_donuts/features/home/presentation/widgets/promotional_banner_carousel.dart';
 

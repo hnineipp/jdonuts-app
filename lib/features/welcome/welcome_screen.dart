@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:jd_donuts/app/router/route_names.dart';
 
 import '../../core/theme/app_colors.dart';
 import '../../core/widgets/common_widgets.dart';
@@ -72,7 +73,7 @@ class WelcomeScreen extends StatelessWidget {
                     delay: const Duration(milliseconds: 950),
                     child: PrimaryButton(
                       label: "Let's explore",
-                      onPressed: () => context.go('/home'),
+                      onPressed: () => context.goNamed(RouteNames.main.home),
                     ),
                   ),
                 ),

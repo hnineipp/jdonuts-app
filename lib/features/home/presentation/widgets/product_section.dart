@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jd_donuts/core/theme/app_theme.dart';
-import 'package:jd_donuts/data/catalog/model/product_model.dart';
+import 'package:jd_donuts/data/store/model/product_model.dart';
 import 'package:jd_donuts/features/home/presentation/widgets/product_card.dart';
 import 'package:jd_donuts/features/home/presentation/widgets/section_feedback.dart';
 import 'package:jd_donuts/l10n/app_localizations.dart';
@@ -21,7 +21,7 @@ class ProductSection extends StatelessWidget {
 
   final String title;
   final List<ProductModel> products;
-  final ValueChanged<ProductModel> onProductTap;
+  final void Function(ProductModel product, String heroTag) onProductTap;
   final ProductSectionStyle style;
   final bool hasError;
   final VoidCallback? onRetry;
@@ -98,7 +98,10 @@ class ProductSection extends StatelessWidget {
                         itemBuilder: (context, index) => ProductCard(
                           product: products[index],
                           style: style,
-                          onTap: () => onProductTap(products[index]),
+                          onTap: (heroTag) => onProductTap(
+                            products[index],
+                            heroTag,
+                          ),
                         ),
                       ),
           ),

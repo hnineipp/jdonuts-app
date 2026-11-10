@@ -110,7 +110,7 @@ class _NameScreenState extends ConsumerState<NameScreen> {
               if (_valid) {
                 ref.registrationVM
                     .setName(_first.text.trim(), _last.text.trim());
-                context.push('/dob');
+                context.pushNamed(RouteNames.main.birthDate);
               }
             },
           ),

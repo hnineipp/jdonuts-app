@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:jd_donuts/core/theme/app_theme.dart';
 import 'package:jd_donuts/core/widgets/common_widgets.dart';
-import 'package:jd_donuts/data/catalog/model/banner_model.dart';
+import 'package:jd_donuts/data/store/model/banner_model.dart';
 import 'package:jd_donuts/features/home/presentation/widgets/section_feedback.dart';
 import 'package:jd_donuts/l10n/app_localizations.dart';
 

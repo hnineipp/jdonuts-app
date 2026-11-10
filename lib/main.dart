@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jd_donuts/features/auth/data/data_sources/local_auth_data_source.dart';
+import 'package:jd_donuts/data/auth/data_sources/local_auth_data_source.dart';
 
 import 'app/app.dart';
 import 'core/storage/local_database.dart';

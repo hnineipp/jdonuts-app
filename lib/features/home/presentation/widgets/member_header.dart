@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:jd_donuts/core/theme/app_theme.dart';
 import 'package:jd_donuts/core/widgets/common_widgets.dart';
+import 'package:jd_donuts/data/store/model/member_model.dart';
 import 'package:jd_donuts/l10n/app_localizations.dart';
-import 'package:jd_donuts/data/catalog/model/member_model.dart';
 
 class MemberHeader extends StatelessWidget {
   const MemberHeader({super.key, required this.member});
@@ -57,8 +57,7 @@ class MemberHeader extends StatelessWidget {
                 ),
                 const SizedBox(height: AppSpacing.xxs),
                 Text(
-                  AppLocalizations.of(context)
-                      .memberTier(member.tier),
+                  AppLocalizations.of(context).memberTier(member.tier),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: theme.textTheme.bodyMedium,

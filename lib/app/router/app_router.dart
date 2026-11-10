@@ -8,7 +8,7 @@ import 'package:jd_donuts/core/navigation/app_shell.dart';
 import 'route_names.dart';
 
 import '../../features/auth/presentation/screens/auth_screens.dart';
-import '../../features/auth/presentation/view_models/auth_view_model.dart';
+import '../../features/auth/view_models/auth_view_model.dart';
 import '../../features/home/presentation/screens/home_screen.dart';
 import '../../features/product/presentation/screens/product_detail_screen.dart';
 import '../../features/rewards/presentation/screens/rewards_screen.dart';
@@ -18,146 +18,103 @@ final appRouterProvider = Provider<GoRouter>((ref) {
   final refreshListenable = ValueNotifier<int>(0);
 
   final router = GoRouter(
-    initialLocation: RouteNames.onboarding,
+    initialLocation: '/',
     refreshListenable: refreshListenable,
     redirect: (context, state) {
       final loggedIn = ref.read(authControllerProvider);
       final path = state.uri.path;
 
       const publicRoutes = {
-        RouteNames.onboarding,
-        RouteNames.phone,
-        RouteNames.otp,
-        RouteNames.name,
-        RouteNames.birthDate,
+        '/',
+        '/phone',
+        '/otp',
+        '/name',
+        '/dob',
       };
 
       final isPublic = publicRoutes.contains(path);
 
       if (!loggedIn) {
         if (isPublic) return null;
-
-        return RouteNames.onboarding;
+        return '/';
       }
 
       if (isPublic) {
-        if (path == RouteNames.birthDate) {
-          return RouteNames.welcome;
-        }
-
-        return RouteNames.home;
+        if (path == '/dob') return '/welcome';
+        return '/home';
       }
 
       return null;
     },
     routes: [
       GoRoute(
-        path: RouteNames.onboarding,
-        pageBuilder: (context, state) => CustomTransitionPage(
-          key: state.pageKey,
-          child: const OnboardingScreen(),
-          transitionDuration: AppMotion.normal,
-          reverseTransitionDuration: AppMotion.normal,
-          transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            return AppMotion.fadeSlide(
-              animation: animation,
-              child: child,
-              begin: const Offset(0.12, 0),
-            );
-          },
+        name: RouteNames.main.onboarding,
+        path: '/',
+        pageBuilder: (context, state) => _buildPage(
+          state,
+          const OnboardingScreen(),
         ),
       ),
       GoRoute(
-        path: RouteNames.phone,
-        pageBuilder: (context, state) => CustomTransitionPage(
-          key: state.pageKey,
-          child: PhoneScreen(
+        name: RouteNames.main.phone,
+        path: '/phone',
+        pageBuilder: (context, state) => _buildPage(
+          state,
+          PhoneScreen(
             isLogin: state.uri.queryParameters['mode'] == 'login',
           ),
-          transitionDuration: AppMotion.normal,
-          reverseTransitionDuration: AppMotion.normal,
-          transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            return AppMotion.fadeSlide(
-              animation: animation,
-              child: child,
-              begin: const Offset(0.12, 0),
-            );
-          },
         ),
       ),
       GoRoute(
-        path: RouteNames.otp,
-        pageBuilder: (context, state) => CustomTransitionPage(
-          key: state.pageKey,
-          child: OtpScreen(
+        name: RouteNames.main.otp,
+        path: '/otp',
+        pageBuilder: (context, state) => _buildPage(
+          state,
+          OtpScreen(
             phone: state.uri.queryParameters['phone'] ?? '',
             isLogin: state.uri.queryParameters['mode'] == 'login',
           ),
-          transitionDuration: AppMotion.normal,
-          reverseTransitionDuration: AppMotion.normal,
-          transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            return AppMotion.fadeSlide(
-              animation: animation,
-              child: child,
-              begin: const Offset(0.12, 0),
-            );
-          },
         ),
       ),
       GoRoute(
-        path: RouteNames.name,
-        pageBuilder: (context, state) => CustomTransitionPage(
-          key: state.pageKey,
-          child: const NameScreen(),
-          transitionDuration: AppMotion.normal,
-          reverseTransitionDuration: AppMotion.normal,
-          transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            return AppMotion.fadeSlide(
-              animation: animation,
-              child: child,
-              begin: const Offset(0.12, 0),
-            );
-          },
+        name: RouteNames.main.name,
+        path: '/name',
+        pageBuilder: (context, state) => _buildPage(
+          state,
+          const NameScreen(),
         ),
       ),
       GoRoute(
-        path: RouteNames.birthDate,
-        pageBuilder: (context, state) => CustomTransitionPage(
-          key: state.pageKey,
-          child: const BirthDateScreen(),
-          transitionDuration: AppMotion.normal,
-          reverseTransitionDuration: AppMotion.normal,
-          transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            return AppMotion.fadeSlide(
-              animation: animation,
-              child: child,
-              begin: const Offset(0.12, 0),
-            );
-          },
+        name: RouteNames.main.birthDate,
+        path: '/dob',
+        pageBuilder: (context, state) => _buildPage(
+          state,
+          const BirthDateScreen(),
         ),
       ),
       GoRoute(
-        path: RouteNames.welcome,
-        pageBuilder: (context, state) => CustomTransitionPage(
-          key: state.pageKey,
-          child: const WelcomeScreen(),
-          transitionDuration: AppMotion.normal,
-          reverseTransitionDuration: AppMotion.normal,
-          transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            return AppMotion.fadeSlide(
-              animation: animation,
-              child: child,
-              begin: const Offset(0.12, 0),
-            );
-          },
+        name: RouteNames.main.welcome,
+        path: '/welcome',
+        pageBuilder: (context, state) => _buildPage(
+          state,
+          const WelcomeScreen(),
         ),
       ),
+
       GoRoute(
-        path: RouteNames.product,
-        builder: (_, state) => ProductDetailScreen(
-          productId: state.pathParameters['id']!,
-        ),
+        name: RouteNames.main.productDetail,
+        path: '/product/:id',
+        builder: (context, state) {
+          final productId = state.pathParameters['id']!;
+
+          return ProductDetailScreen(
+            productId: productId,
+            heroTag: state.extra as String? ?? 'home-seasonal-$productId',
+          );
+        },
       ),
+
+      // Main shell
       ShellRoute(
         builder: (context, state, child) {
           final location = state.matchedLocation;
@@ -179,15 +136,18 @@ final appRouterProvider = Provider<GoRouter>((ref) {
         },
         routes: [
           GoRoute(
-            path: RouteNames.home,
+            name: RouteNames.main.home,
+            path: '/home',
             builder: (_, __) => const HomeScreen(),
           ),
           GoRoute(
-            path: RouteNames.rewards,
+            name: RouteNames.main.rewards,
+            path: '/rewards',
             builder: (_, __) => const RewardsScreen(),
           ),
           GoRoute(
-            path: RouteNames.placeholder,
+            name: RouteNames.main.placeholder,
+            path: '/placeholder/:name',
             builder: (_, state) => PlaceholderScreen(
               title: state.pathParameters['name'] ?? 'More',
             ),
@@ -209,3 +169,22 @@ final appRouterProvider = Provider<GoRouter>((ref) {
 
   return router;
 });
+
+CustomTransitionPage<void> _buildPage(
+  GoRouterState state,
+  Widget child,
+) {
+  return CustomTransitionPage<void>(
+    key: state.pageKey,
+    child: child,
+    transitionDuration: AppMotion.normal,
+    reverseTransitionDuration: AppMotion.normal,
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      return AppMotion.fadeSlide(
+        animation: animation,
+        child: child,
+        begin: const Offset(0.12, 0),
+      );
+    },
+  );
+}

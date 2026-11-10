@@ -5,10 +5,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:jd_donuts/core/motion/motion.dart';
 import 'package:jd_donuts/core/theme/app_colors.dart';
-import 'package:jd_donuts/data/catalog/model/challenge_model.dart';
-import 'package:jd_donuts/data/catalog/model/reward_model.dart';
-import 'package:jd_donuts/features/rewards/presentation/view_models/rewards_state.dart';
-import 'package:jd_donuts/features/rewards/presentation/view_models/rewards_view_model.dart';
+import 'package:jd_donuts/data/rewards/model/challenge_model.dart';
+import 'package:jd_donuts/data/rewards/model/reward_model.dart';
+import 'package:jd_donuts/features/rewards/view_models/rewards_state.dart';
+import 'package:jd_donuts/features/rewards/view_models/rewards_view_model.dart';
 
 part '../widgets/rewards_header.dart';
 part '../widgets/rewards_tier_ladder.dart';
@@ -49,8 +49,7 @@ class _RewardsScreenState extends ConsumerState<RewardsScreen>
     super.didChangeDependencies();
     if (MediaQuery.disableAnimationsOf(context)) {
       _entryController.value = 1;
-    } else if (_entryController.value == 0 &&
-        !_entryController.isAnimating) {
+    } else if (_entryController.value == 0 && !_entryController.isAnimating) {
       _entryController.forward();
     }
   }

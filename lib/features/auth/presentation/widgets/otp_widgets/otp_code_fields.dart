@@ -27,7 +27,7 @@ class OtpCodeFields extends StatelessWidget {
           child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 4.w),
               child: SizedBox(
-                height: 60.h,
+                height: 56.h,
                 child: TextField(
                   controller: controllers[index],
                   focusNode: focusNodes[index],

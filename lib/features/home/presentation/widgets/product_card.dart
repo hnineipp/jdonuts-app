@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+
 import 'package:jd_donuts/core/theme/app_theme.dart';
-import 'package:jd_donuts/data/catalog/model/product_model.dart';
 import 'package:jd_donuts/core/widgets/common_widgets.dart';
+import 'package:jd_donuts/data/store/model/product_model.dart';
 import 'package:jd_donuts/features/home/presentation/widgets/product_section.dart';
 import 'package:jd_donuts/l10n/app_localizations.dart';
 
@@ -15,14 +16,16 @@ class ProductCard extends StatelessWidget {
 
   final ProductModel product;
   final ProductSectionStyle style;
-  final VoidCallback onTap;
+
+  // Passes the selected Hero tag to Product Detail.
+  final ValueChanged<String> onTap;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colors = theme.colorScheme;
-    final discount =
-        product.homeDiscountPercent ?? product.discountPercent;
+
+    final discount = product.homeDiscountPercent ?? product.discountPercent;
 
     final isSeasonal = style == ProductSectionStyle.seasonal;
     final isPopular = style == ProductSectionStyle.popular;
@@ -34,6 +37,9 @@ class ProductCard extends StatelessWidget {
         ? product.orderAgainTitle ?? product.name
         : product.name;
 
+    // Unique Hero tag for each Home section.
+    final heroTag = 'home-${style.name}-${product.id}';
+
     return SizedBox(
       width: width,
       child: Column(
@@ -44,7 +50,7 @@ class ProductCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(AppRadius.lg),
             clipBehavior: Clip.antiAlias,
             child: InkWell(
-              onTap: onTap,
+              onTap: () => onTap(heroTag),
               borderRadius: BorderRadius.circular(AppRadius.lg),
               child: SizedBox(
                 height: imageHeight,
@@ -55,7 +61,7 @@ class ProductCard extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(AppSpacing.md),
                         child: Hero(
-                          tag: 'product-${product.id}',
+                          tag: heroTag,
                           child: AppImage(
                             product.image,
                             fit: BoxFit.contain,
@@ -74,7 +80,9 @@ class ProductCard extends StatelessWidget {
                           ),
                           decoration: BoxDecoration(
                             color: AppColors.accent,
-                            borderRadius: BorderRadius.circular(AppRadius.pill),
+                            borderRadius: BorderRadius.circular(
+                              AppRadius.pill,
+                            ),
                           ),
                           child: Text(
                             AppLocalizations.of(context)

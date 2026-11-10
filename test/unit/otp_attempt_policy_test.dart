@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:jd_donuts/features/auth/domain/otp_attempt_policy.dart';
+import 'package:jd_donuts/data/auth/domain/otp_attempt_policy.dart';
 
 void main() {
   group('OtpAttemptPolicy', () {
