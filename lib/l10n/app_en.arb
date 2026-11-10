@@ -1,0 +1,162 @@
+{
+  "@@locale": "en",
+  "appName": "J'Donuts",
+  "login": "Login",
+  "register": "Register",
+  "logout": "Logout",
+  "welcome": "Welcome",
+  "phoneNumber": "Phone number",
+  "firstName": "First name",
+  "lastName": "Last name",
+  "dateOfBirth": "Date of birth",
+  "continueLabel": "Continue",
+  "cancel": "Cancel",
+  "retry": "Retry",
+  "offlineMessage": "You are offline · Showing saved content",
+  "loading": "Loading...",
+  "emptyProducts": "No products available",
+  "productNotFound": "Product not found.",
+  "somethingWentWrong": "Something went wrong. Please try again.",
+  "nearYou": "near you",
+  "exploreNow": "EXPLORE NOW",
+  "pointsLeftToTier": "{points} points left to become {tier} Member",
+  "@pointsLeftToTier": {
+    "placeholders": {
+      "points": {
+        "type": "String"
+      },
+      "tier": {
+        "type": "String"
+      }
+    }
+  },
+  "memberTier": "{tier} member",
+  "@memberTier": {
+    "placeholders": {
+      "tier": {
+        "type": "String"
+      }
+    }
+  },
+  "notificationCount": "{count} notifications",
+  "@notificationCount": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "noPromotionsAvailable": "No promotions available",
+  "homeRetry": "Try again",
+  "seasonalSpecials": "Seasonal specials",
+  "popular": "Popular",
+  "orderAgain": "Order again",
+  "nearbyShopCount": "There are {count} J’Donut shops near you",
+  "@nearbyShopCount": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "homeError": "Could not load your saved home data.",
+  "sectionLoadError": "This section could not be loaded.",
+  "noNearbyShops": "No nearby shops found",
+  "orderOnline": "Order online",
+  "home": "Home",
+  "rewards": "Rewards",
+  "order": "Order",
+  "nearby": "Nearby",
+  "settings": "Settings",
+  "noProductsAvailableYet": "No products available yet",
+  "discountOff": "{discount}% off",
+  "@discountOff": {
+    "description": "Product discount percentage label",
+    "placeholders": {
+      "discount": {
+        "type": "String"
+      }
+    }
+  },
+  "account": "Account",
+  "wallet": "Wallet",
+  "productUnavailable": "Product unavailable.",
+  "newBadge": "New",
+  "whatsThis": "What's this?",
+  "addToCart": "Add to cart",
+  "addedToCart": "{quantity} × {productName} added to cart",
+  "@addedToCart": {
+    "placeholders": {
+      "quantity": {
+        "type": "int"
+      },
+      "productName": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingTagline": "Round food for\nevery mood",
+  "getStarted": "LET'S GET STARTED",
+  "alreadyHaveAccount": "Already have an account?",
+  "googleSignIn": "Google sign-in",
+  "appleSignIn": "Apple sign-in",
+  "facebookSignIn": "Facebook sign-in",
+  "legalNotice": "By continuing, you acknowledge that you have read and agree to our",
+  "termsOfUse": "Terms of Use",
+  "privacyPolicy": "Privacy Policy",
+  "andLabel": "and",
+  "enterPhoneNumber": "Enter your phone\nnumber",
+  "invalidMyanmarPhone": "Enter a valid Myanmar phone number.",
+  "verifyYourNumber": "Verify your number",
+  "otpSentTo": "We've sent a 6 digit OTP to {phone}",
+  "@otpSentTo": {
+    "placeholders": {
+      "phone": {
+        "type": "String"
+      }
+    }
+  },
+  "tooManyIncorrectOtpAttempts": "Too many incorrect attempts. Resend code to try again.",
+  "incorrectOtp": "Incorrect code. Please try again.",
+  "unregisteredPhone": "This number is not registered. Register now.",
+  "unableToSignIn": "Unable to sign in. Please try again.",
+  "tooManyAttemptsResend": "Too many attempts. Tap Resend code to try again.",
+  "didntReceiveCode": "Didn't receive the code?",
+  "whatsYourName": "What's your\nname?",
+  "invalidFirstName": "Enter a valid first name.",
+  "invalidNameCharacters": "Use letters and spaces only.",
+  "whatsYourDateOfBirth": "What's your\ndate of birth?",
+  "month": "Month (1–12)",
+  "day": "Day",
+  "year": "Year",
+  "invalidDateOfBirth": "Enter a valid date of birth.",
+  "invalidCalendarDate": "Enter a real calendar date.",
+  "futureDateOfBirth": "Date of birth cannot be in the future.",
+  "minimumAgeError": "You must be at least 13 years old.",
+  "registrationFailed": "Unable to complete registration. Please try again.",
+  "featureDemoPlaceholder": "{feature} is a demo placeholder.",
+  "@featureDemoPlaceholder": {
+    "placeholders": {
+      "feature": {
+        "type": "String"
+      }
+    }
+  },
+  "resendCode": "Resend code",
+  "resendIn": "Resend in {time}",
+  "@resendIn": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "registerNow": "Register now",
+  "logout": "Log out",
+  "logoutConfirmationTitle": "Log out?",
+  "logoutConfirmationMessage": "Are you sure you want to log out?",
+  "logoutFailed": "Unable to log out. Please try again.",
+  "cancel": "Cancel",
+  "logoutDescription": "You will be signed out of this device. You can sign in again anytime.",
+  "loggingOut": "Logging out..."
+}

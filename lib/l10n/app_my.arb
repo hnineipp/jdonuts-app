@@ -1,0 +1,154 @@
+{
+  "@@locale": "my",
+  "appName": "J'Donuts",
+  "login": "အကောင့်ဝင်ရန်",
+  "register": "အကောင့်ဖွင့်ရန်",
+  "logout": "အကောင့်ထွက်ရန်",
+  "welcome": "ကြိုဆိုပါတယ်",
+  "phoneNumber": "ဖုန်းနံပါတ်",
+  "firstName": "အမည်",
+  "lastName": "မျိုးရိုးအမည်",
+  "dateOfBirth": "မွေးသက္ကရာဇ်",
+  "continueLabel": "ဆက်လုပ်ရန်",
+  "cancel": "မလုပ်တော့ပါ",
+  "retry": "ပြန်ကြိုးစားရန်",
+  "offlineMessage": "အင်တာနက်ချိတ်ဆက်မှု မရှိပါ · သိမ်းဆည်းထားသော အကြောင်းအရာကို ပြသနေသည်",
+  "loading": "ဖွင့်နေသည်...",
+  "emptyProducts": "ကုန်ပစ္စည်း မရှိသေးပါ",
+  "productNotFound": "ကုန်ပစ္စည်းကို ရှာမတွေ့ပါ။",
+  "somethingWentWrong": "တစ်ခုခု မှားယွင်းနေပါသည်။ ထပ်မံကြိုးစားပါ။",
+  "nearYou": "အနီးအနားရှိ ဆိုင်များ 😊",
+  "exploreNow": "ဆိုင်များကို ကြည့်ရန်",
+  "pointsLeftToTier": "{tier} Member ဖြစ်ရန် {points} မှတ် လိုသေးသည်",
+  "@pointsLeftToTier": {
+    "placeholders": {
+      "points": {
+        "type": "String"
+      },
+      "tier": {
+        "type": "String"
+      }
+    }
+  },
+  "memberTier": "{tier} အဖွဲ့ဝင်",
+  "@memberTier": {
+    "placeholders": {
+      "tier": {
+        "type": "String"
+      }
+    }
+  },
+  "notificationCount": "အသိပေးချက် {count} ခု",
+  "@notificationCount": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "noPromotionsAvailable": "ပရိုမိုးရှင်း မရှိသေးပါ",
+  "homeRetry": "ထပ်မံကြိုးစားရန်",
+  "seasonalSpecials": "ရာသီအလိုက် အထူးအစီအစဉ်များ",
+  "popular": "လူကြိုက်များသော 🔥",
+  "orderAgain": "ထပ်မံမှာယူရန်",
+  "nearbyShopCount": "အနီးအနားတွင် J’Donut ဆိုင် {count} ဆိုင် ရှိပါသည်",
+  "@nearbyShopCount": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "homeError": "သိမ်းဆည်းထားသော ပင်မစာမျက်နှာဒေတာကို ဖွင့်မရပါ။",
+  "sectionLoadError": "ဤအပိုင်းကို ဖွင့်မရပါ။",
+  "noNearbyShops": "အနီးအနားတွင် ဆိုင်မတွေ့ပါ",
+  "orderOnline": "အွန်လိုင်းမှာယူရန်",
+  "home": "ပင်မ",
+  "rewards": "ဆုလက်ဆောင်",
+  "order": "မှာယူရန်",
+  "nearby": "အနီးအနား",
+  "settings": "ဆက်တင်များ",
+  "noProductsAvailableYet": "ကုန်ပစ္စည်း မရှိသေးပါ",
+  "discountOff": "{discount}% လျှော့ဈေး",
+  "account": "အကောင့်",
+  "wallet": "ပိုက်ဆံအိတ်",
+  "productUnavailable": "ကုန်ပစ္စည်းကို မရရှိနိုင်ပါ။",
+  "newBadge": "အသစ်",
+  "whatsThis": "ဒါကဘာလဲ။",
+  "addToCart": "ခြင်းထဲထည့်ရန်",
+  "addedToCart": "{quantity} × {productName} ကို ဈေးဝယ်ခြင်းတောင်းထဲ ထည့်ပြီးပါပြီ။",
+  "@addedToCart": {
+    "placeholders": {
+      "quantity": {
+        "type": "int"
+      },
+      "productName": {
+        "type": "String"
+      }
+    }
+  },
+  "onboardingTagline": "စိတ်ခံစားချက်တိုင်းအတွက်\nဒိုးနတ်လေးတွေ",
+  "getStarted": "စတင်ကြရအောင်",
+  "alreadyHaveAccount": "အကောင့်ရှိပြီးသားလား။",
+  "googleSignIn": "Google ဖြင့် ဝင်ရန်",
+  "appleSignIn": "Apple ဖြင့် ဝင်ရန်",
+  "facebookSignIn": "Facebook ဖြင့် ဝင်ရန်",
+  "legalNotice": "ဆက်လက်လုပ်ဆောင်ခြင်းဖြင့် ကျွန်ုပ်တို့၏ အောက်ပါစည်းကမ်းချက်များကို ဖတ်ရှုပြီး သဘောတူကြောင်း အတည်ပြုပါသည်",
+  "termsOfUse": "အသုံးပြုမှု စည်းကမ်းချက်များ",
+  "privacyPolicy": "ကိုယ်ရေးအချက်အလက် မူဝါဒ",
+  "andLabel": "နှင့်",
+  "enterPhoneNumber": "ဖုန်းနံပါတ်\nထည့်ပါ",
+  "invalidMyanmarPhone": "မှန်ကန်သော မြန်မာဖုန်းနံပါတ်ကို ထည့်ပါ။",
+  "verifyYourNumber": "သင့်ဖုန်းနံပါတ်ကို အတည်ပြုပါ",
+  "otpSentTo": "{phone} သို့ ဂဏန်း ၆ လုံးပါ OTP ပို့ထားပါသည်",
+  "@otpSentTo": {
+    "placeholders": {
+      "phone": {
+        "type": "String"
+      }
+    }
+  },
+  "tooManyIncorrectOtpAttempts": "မှားယွင်းသော ကုဒ်ကို အကြိမ်များစွာ ထည့်သွင်းထားပါသည်။ ကုဒ်အသစ် ပြန်တောင်းပါ။",
+  "incorrectOtp": "ကုဒ်မှားနေပါသည်။ ထပ်မံကြိုးစားပါ။",
+  "unregisteredPhone": "ဤဖုန်းနံပါတ်ဖြင့် အကောင့်ဖွင့်ထားခြင်း မရှိသေးပါ။ ယခုပင် အကောင့်ဖွင့်ပါ။",
+  "unableToSignIn": "အကောင့်ဝင်၍ မရပါ။ ထပ်မံကြိုးစားပါ။",
+  "tooManyAttemptsResend": "ကြိုးစားမှု အကြိမ်ရေများနေပါသည်။ ကုဒ်အသစ် ပြန်တောင်းပြီး ထပ်ကြိုးစားပါ။",
+  "didntReceiveCode": "ကုဒ်မရရှိဘူးလား။",
+  "whatsYourName": "သင့်အမည်က\nဘာလဲ။",
+  "invalidFirstName": "မှန်ကန်သော အမည်ကို ထည့်ပါ။",
+  "invalidNameCharacters": "အက္ခရာများနှင့် space ကိုသာ အသုံးပြုပါ။",
+  "whatsYourDateOfBirth": "သင့်မွေးသက္ကရာဇ်က\nဘယ်နေ့လဲ။",
+  "month": "လ (1–12)",
+  "day": "ရက်",
+  "year": "နှစ်",
+  "invalidDateOfBirth": "မှန်ကန်သော မွေးသက္ကရာဇ်ကို ထည့်ပါ။",
+  "invalidCalendarDate": "ပြက္ခဒိန်အရ မှန်ကန်သော ရက်စွဲကို ထည့်ပါ။",
+  "futureDateOfBirth": "မွေးသက္ကရာဇ်သည် ယနေ့ထက် နောက်ကျ၍ မရပါ။",
+  "minimumAgeError": "အသက် ၁၃ နှစ်နှင့်အထက် ဖြစ်ရပါမည်။",
+  "registrationFailed": "အကောင့်ဖွင့်၍ မရပါ။ ထပ်မံကြိုးစားပါ။",
+  "featureDemoPlaceholder": "{feature} သည် စမ်းသပ်ပြသရန်အတွက်သာ ဖြစ်ပါသည်။",
+  "@featureDemoPlaceholder": {
+    "placeholders": {
+      "feature": {
+        "type": "String"
+      }
+    }
+  },
+  "resendCode": "ကုဒ်အသစ် ပြန်ပို့ရန်",
+  "resendIn": "{time} ကြာလျှင် ကုဒ်အသစ် ပြန်ပို့နိုင်ပါသည်",
+  "@resendIn": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "registerNow": "ယခုပင် အကောင့်ဖွင့်ပါ",
+  "logout": "အကောင့်မှ ထွက်မည်",
+  "logoutConfirmationTitle": "အကောင့်မှ ထွက်မှာ သေချာပါသလား?",
+  "logoutConfirmationMessage": "သင့်အကောင့်မှ ထွက်ရန် သေချာပါသလား?",
+  "logoutFailed": "အကောင့်မှ ထွက်၍မရပါ။ ထပ်မံကြိုးစားပါ။",
+  "cancel": "မလုပ်တော့ပါ",
+  "logoutDescription": "သင့်အကောင့်မှ ထွက်သွားပါမည်။ အချိန်မရွေး ပြန်လည်ဝင်ရောက်နိုင်ပါသည်။",
+  "loggingOut": "အကောင့်မှ ထွက်နေပါသည်..."
+}
