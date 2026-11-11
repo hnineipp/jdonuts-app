@@ -6,8 +6,8 @@ A feature-first Flutter application developed for the J'Donuts assessment. It de
 
 | Technology | Version / Choice |
 |---|---|
-| Flutter | 3.47.2 (stable) |
-| Dart | 3.13.2 |
+| Flutter | 3.47.9 (stable) |
+| Dart | 3.13.7 |
 | State Management | Riverpod 2.6.1 |
 | Navigation | GoRouter 14.8.1 |
 | Local Database | Hive CE |
